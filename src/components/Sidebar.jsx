@@ -18,8 +18,13 @@ import {
   Switch,
 } from "@mui/material";
 import React from "react";
+import { useDispatch } from "react-redux";
 
-export const Sidebar = ({ mode, setMode }) => {
+import { TOGGLE_DARKTHEME } from "../store/types";
+
+export const Sidebar = () => {
+  const dispatch = useDispatch();
+
   return (
     <Box flex={1} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
       <Box position="fixed">
@@ -85,9 +90,7 @@ export const Sidebar = ({ mode, setMode }) => {
               <ListItemIcon>
                 <ModeNight />
               </ListItemIcon>
-              <Switch
-                onChange={(e) => setMode(mode === "light" ? "dark" : "light")}
-              />
+              <Switch onChange={() => dispatch({ type: TOGGLE_DARKTHEME })} />
             </ListItemButton>
           </ListItem>
         </List>
